@@ -1,5 +1,5 @@
 FROM ubuntu:18.10
-RUN apt-get update -y && apt-get install -y wget && \
+RUN apt-get update -y && apt-get install -y wget unzip gcc g++ make zlib1g-dev && \
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* && \
     wget -P /usr/bin "https://raw.githubusercontent.com/inutano/pfastq-dump/master/bin/pfastq-dump" && \
     chmod +x /usr/bin/pfastq-dump && \
@@ -7,3 +7,10 @@ RUN apt-get update -y && apt-get install -y wget && \
     tar zxf /sratoolkit.2.9.2-ubuntu64.tar.gz && \
     cp -r /sratoolkit.2.9.2-ubuntu64/bin/* /usr/bin && \
     rm -fr /sratoolkit.2.9.2-ubuntu64*
+
+##########
+## sequeeze
+RUN wget https://github.com/aokad/sequeeze/archive/master.zip && \
+    unzip master.zip && \
+    cd sequeeze-master && \
+    make && make install
