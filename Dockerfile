@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM ubuntu:20.04
 RUN apt-get update -y && apt-get install -y wget unzip gcc g++ make zlib1g-dev libxml-libxml-perl && \
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* && \
     wget -P /usr/bin "https://raw.githubusercontent.com/inutano/pfastq-dump/master/bin/pfastq-dump" && \
