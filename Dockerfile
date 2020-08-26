@@ -1,7 +1,13 @@
-FROM ubuntu:20.04
+FROM debian:9.11
+MAINTAINER Ai Okada <aokada@ncc.go.jp>
+
+WORKDIR /tools
 RUN apt-get update -y && apt-get install -y wget unzip gcc g++ make zlib1g-dev libxml-libxml-perl curl && \
-    apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* && \
-    wget -P /usr/bin "https://raw.githubusercontent.com/inutano/pfastq-dump/master/bin/pfastq-dump" && \
+    apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+    
+##########
+# fastq-dump
+RUN wget -P /usr/bin "https://raw.githubusercontent.com/inutano/pfastq-dump/master/bin/pfastq-dump" && \
     chmod +x /usr/bin/pfastq-dump && \
     wget -P / "http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.10.0/sratoolkit.2.10.0-ubuntu64.tar.gz" && \
     tar zxf /sratoolkit.2.10.0-ubuntu64.tar.gz && \
