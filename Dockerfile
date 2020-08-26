@@ -1,7 +1,6 @@
 FROM debian:9.11
 MAINTAINER Ai Okada <aokada@ncc.go.jp>
 
-WORKDIR /tools
 RUN apt-get update -y && apt-get install -y wget unzip gcc g++ make zlib1g-dev libxml-libxml-perl curl && \
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
     
